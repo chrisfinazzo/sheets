@@ -35,6 +35,7 @@ func newModel() model {
 
 	return model{
 		mode:          normalMode,
+		keymap:        LoadKeymapConfig(),
 		rowCount:      defaultRows,
 		selectedRow:   0,
 		selectedCol:   0,
@@ -133,10 +134,22 @@ func newModel() model {
 			Background(statusSelectAccent).
 			Foreground(white).
 			Padding(0, 1),
+		statusGotoStyle: lipgloss.NewStyle().
+			Background(lipgloss.Color("#61AFEF")).
+			Foreground(lipgloss.Color("0")).
+			Padding(0, 1),
 		commandLineStyle: lipgloss.NewStyle().
 			Foreground(statusText),
 		commandErrorStyle: lipgloss.NewStyle().
 			Foreground(errorRed),
+		gotoOverlayColStyle: lipgloss.NewStyle().
+			Foreground(lipgloss.Color("#61AFEF")).
+			Bold(true),
+		gotoOverlayRowStyle: lipgloss.NewStyle().
+			Foreground(lipgloss.Color("#E5C07B")).
+			Bold(true),
+		gotoOverlayDimStyle: lipgloss.NewStyle().
+			Foreground(lipgloss.Color("239")),
 	}
 }
 
